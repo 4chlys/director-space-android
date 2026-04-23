@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Yorgos Lanthimos",
       "country": "Greece",
-      "birthYear": 1973,
+      "birthDate": "1973-09-23",
       "careerStart": 2001,
       "careerEnd": null,
       "active": true,
       "rating": 8.1,
       "genres": ["Drama", "Thriller", "Romance"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Yorgos_Lanthimos_%2848513584036%29_%28cropped%29.jpg/440px-Yorgos_Lanthimos_%2848513584036%29_%28cropped%29.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/dvtv8eV1O8Fl385ctOu3sqO2PbD.jpg",
       "bio": "Greek filmmaker known for his surreal, darkly comic style.",
       "nationality": "Greek"
     },
@@ -18,13 +18,13 @@
       "id": 2,
       "name": "Stanley Kubrick",
       "country": "USA",
-      "birthYear": 1928,
+      "birthDate": "1928-07-26",
       "careerStart": 1951,
       "careerEnd": 1999,
       "active": false,
       "rating": 9.0,
       "genres": ["Drama", "Horror", "SciFi"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kubrick_on_the_set_of_Barry_Lyndon_2.jpg/440px-Kubrick_on_the_set_of_Barry_Lyndon_2.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/yFT0VyIelI9aegZrsAwOG5iVP4v.jpg",
       "bio": "Legendary American filmmaker, widely regarded as one of the greatest directors of all time.",
       "nationality": "American"
     },
@@ -32,13 +32,13 @@
       "id": 3,
       "name": "David Lynch",
       "country": "USA",
-      "birthYear": 1946,
+      "birthDate": "1946-01-20",
       "careerStart": 1970,
       "careerEnd": 2006,
       "active": false,
       "rating": 8.5,
       "genres": ["Thriller", "Drama", "Mystery"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/David_Lynch_%282014%29_%28cropped%29.jpg/440px-David_Lynch_%282014%29_%28cropped%29.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/wwBzRDoIW6Ld64h6OkQ6ImCZKsR.jpg",
       "bio": "American director famous for his surrealist and neo-noir films.",
       "nationality": "American"
     },
@@ -46,13 +46,13 @@
       "id": 4,
       "name": "Robert Eggers",
       "country": "USA",
-      "birthYear": 1983,
+      "birthDate": "1983-03-22",
       "careerStart": 2015,
       "careerEnd": null,
       "active": true,
       "rating": 7.5,
       "genres": ["Horror", "Drama", "Historical"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Robert_Eggers_by_Gage_Skidmore.jpg/440px-Robert_Eggers_by_Gage_Skidmore.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/v9ukVIUGT1vQ3KuPVLSua7FfS9s.jpg",
       "bio": "American filmmaker known for meticulous period horror films.",
       "nationality": "American"
     },
@@ -60,13 +60,13 @@
       "id": 5,
       "name": "Jean-Luc Godard",
       "country": "France",
-      "birthYear": 1930,
+      "birthDate": "1930-12-03",
       "careerStart": 1950,
       "careerEnd": 2018,
       "active": false,
       "rating": 8.3,
       "genres": ["Drama", "Romance", "Experimental"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Jean-Luc_Godard_-_1_%28cropped%29.jpg/440px-Jean-Luc_Godard_-_1_%28cropped%29.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/zP5EDY5MstfkdBmPXNCj8Y6v5KR.jpg",
       "bio": "French-Swiss director and a key figure of the French New Wave movement.",
       "nationality": "French-Swiss"
     },
@@ -74,13 +74,13 @@
       "id": 6,
       "name": "Christopher Nolan",
       "country": "UK",
-      "birthYear": 1970,
+      "birthDate": "1970-07-30",
       "careerStart": 1998,
       "careerEnd": null,
       "active": true,
       "rating": 8.6,
       "genres": ["Action", "SciFi", "Thriller"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Christopher_Nolan_Cannes_2018.jpg/440px-Christopher_Nolan_Cannes_2018.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/xuAIuYSmsUzKlUMBFGVZaWsY3DZ.jpg",
       "bio": "British-American director known for complex, cerebral blockbusters.",
       "nationality": "British"
     },
@@ -88,13 +88,13 @@
       "id": 7,
       "name": "Denis Villeneuve",
       "country": "Canada",
-      "birthYear": 1967,
+      "birthDate": "1967-10-03",
       "careerStart": 1998,
       "careerEnd": null,
       "active": true,
       "rating": 8.2,
       "genres": ["SciFi", "Drama", "Thriller"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Denis_Villeneuve_Dune_2021.jpg/440px-Denis_Villeneuve_Dune_2021.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/zdDx9Xs93UIrJFWYApYR28J8M6b.jpg",
       "bio": "Canadian director celebrated for visually stunning science fiction epics.",
       "nationality": "Canadian"
     },
@@ -102,13 +102,13 @@
       "id": 8,
       "name": "Wes Anderson",
       "country": "USA",
-      "birthYear": 1969,
+      "birthDate": "1969-05-01",
       "careerStart": 1996,
       "careerEnd": null,
       "active": true,
       "rating": 8.0,
       "genres": ["Comedy", "Drama"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Wes_Anderson_2012.jpg/440px-Wes_Anderson_2012.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/s03CeUeC5yAXyB1acqP0zGNo2SC.jpg",
       "bio": "American filmmaker known for his distinctive visual and narrative style.",
       "nationality": "American"
     },
@@ -116,13 +116,13 @@
       "id": 9,
       "name": "Quentin Tarantino",
       "country": "USA",
-      "birthYear": 1963,
+      "birthDate": "1963-03-27",
       "careerStart": 1992,
       "careerEnd": null,
       "active": true,
       "rating": 8.8,
       "genres": ["Drama", "Action", "Thriller"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Quentin_Tarantino_by_Gage_Skidmore.jpg/440px-Quentin_Tarantino_by_Gage_Skidmore.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg",
       "bio": "American filmmaker renowned for nonlinear storytelling and sharp dialogue.",
       "nationality": "American"
     },
@@ -130,13 +130,13 @@
       "id": 10,
       "name": "Alfonso Cuarón",
       "country": "Mexico",
-      "birthYear": 1961,
+      "birthDate": "1961-11-28",
       "careerStart": 1991,
       "careerEnd": null,
       "active": true,
       "rating": 8.4,
       "genres": ["Drama", "SciFi", "Thriller"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Alfonso_Cuar%C3%B3n_at_2013_Sundance_Film_Festival_%28cropped%29.jpg/440px-Alfonso_Cuar%C3%B3n_at_2013_Sundance_Film_Festival_%28cropped%29.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/gaHhrzPfxfc3cbQLkDt54gtP3n1.jpg",
       "bio": "Mexican director known for technical innovation and personal storytelling.",
       "nationality": "Mexican"
     },
@@ -144,13 +144,13 @@
       "id": 11,
       "name": "Park Chan-wook",
       "country": "South Korea",
-      "birthYear": 1963,
+      "birthDate": "1963-08-23",
       "careerStart": 1992,
       "careerEnd": null,
       "active": true,
       "rating": 8.6,
       "genres": ["Thriller", "Drama", "Action"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Park_Chan-wook_at_the_2022_Cannes_Film_Festival_%28cropped%29.jpg/440px-Park_Chan-wook_at_the_2022_Cannes_Film_Festival_%28cropped%29.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/jsSFCVB7MhuVbSLwTgESiXEiNjt.jpg",
       "bio": "South Korean director known for the Vengeance Trilogy and complex moral narratives.",
       "nationality": "South Korean"
     },
@@ -158,13 +158,13 @@
       "id": 12,
       "name": "Sofia Coppola",
       "country": "USA",
-      "birthYear": 1971,
+      "birthDate": "1971-05-14",
       "careerStart": 1998,
       "careerEnd": null,
       "active": true,
       "rating": 7.7,
       "genres": ["Drama", "Romance"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Sofia_Coppola_Cannes_2017.jpg/440px-Sofia_Coppola_Cannes_2017.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/dzHC2LxmarkBxWLhjp2DRa5oCev.jpg",
       "bio": "American filmmaker celebrated for intimate, atmospheric character studies.",
       "nationality": "American"
     },
@@ -172,13 +172,13 @@
       "id": 13,
       "name": "Martin Scorsese",
       "country": "USA",
-      "birthYear": 1942,
+      "birthDate": "1942-11-17",
       "careerStart": 1963,
       "careerEnd": null,
       "active": true,
       "rating": 9.1,
       "genres": ["Drama", "Crime", "Thriller"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Martin_Scorsese_2010.jpg/440px-Martin_Scorsese_2010.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/9U9Y5GQuWX3EZy39B8nkk4NY01S.jpg",
       "bio": "Iconic American director and film historian known for crime epics.",
       "nationality": "American"
     },
@@ -186,13 +186,13 @@
       "id": 14,
       "name": "Céline Sciamma",
       "country": "France",
-      "birthYear": 1978,
+      "birthDate": "1978-11-12",
       "careerStart": 2007,
       "careerEnd": null,
       "active": true,
       "rating": 8.1,
       "genres": ["Drama", "Romance"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/C%C3%A9line_Sciamma_%28cropped%29.jpg/440px-C%C3%A9line_Sciamma_%28cropped%29.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/4B5Bt47HYTObsde1einBDha03ka.jpg",
       "bio": "French director known for intimate films exploring identity and desire.",
       "nationality": "French"
     },
@@ -200,13 +200,13 @@
       "id": 15,
       "name": "Bong Joon-ho",
       "country": "South Korea",
-      "birthYear": 1969,
+      "birthDate": "1969-09-14",
       "careerStart": 2000,
       "careerEnd": null,
       "active": true,
       "rating": 8.9,
       "genres": ["Thriller", "Drama", "Comedy"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Bong_Joon-ho_at_the_2019_Academy_Awards.jpg/440px-Bong_Joon-ho_at_the_2019_Academy_Awards.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/stwnTvZAoD8gEJEDHpDQyLCyDy5.jpg",
       "bio": "South Korean director, winner of the Academy Award for Best Picture for Parasite.",
       "nationality": "South Korean"
     },
@@ -214,15 +214,29 @@
       "id": 16,
       "name": "Andrei Tarkovsky",
       "country": "Russia",
-      "birthYear": 1932,
+      "birthDate": "1932-04-04",
       "careerStart": 1962,
       "careerEnd": 1986,
       "active": false,
       "rating": 9.2,
       "genres": ["Drama", "SciFi", "Experimental"],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Andrei_Tarkovsky_1982_cropped.jpg/440px-Andrei_Tarkovsky_1982_cropped.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/mytn9s5kc6CqzKZtbuJ73oA6ujy.jpg",
       "bio": "Visionary Soviet filmmaker known for meditative, philosophical cinema.",
       "nationality": "Russian"
+    },
+    {
+      "id": 17,
+      "name": "Hirokazu Kore-eda",
+      "country": "Japan",
+      "birthDate": "1962-06-06",
+      "careerStart": 1995,
+      "careerEnd": null,
+      "active": true,
+      "rating": null,
+      "genres": [],
+      "image": "https://image.tmdb.org/t/p/w500/9Quu2Jo5ItVgs8V1YPCaLEHc8y1.jpg",
+      "bio": "Japanese director celebrated for tender, humanist family dramas and Palme d'Or winner for Shoplifters.",
+      "nationality": "Japanese"
     }
   ],
   "films": [
@@ -235,7 +249,8 @@
       "durationMinutes": 118,
       "genre": "Drama",
       "inColor": true,
-      "awards": ["Jury Prize Cannes"]
+      "awards": ["Jury Prize Cannes"],
+      "image": "https://image.tmdb.org/t/p/w500/7Y9ILV1unpW9mLpGcqyGQU72LUy.jpg"
     },
     {
       "id": 2,
@@ -246,7 +261,8 @@
       "durationMinutes": 141,
       "genre": "Comedy",
       "inColor": true,
-      "awards": ["Golden Lion Venice", "Academy Award Best Actress"]
+      "awards": ["Golden Lion Venice", "Academy Award Best Actress"],
+      "image": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg"
     },
     {
       "id": 3,
@@ -257,7 +273,8 @@
       "durationMinutes": 121,
       "genre": "Thriller",
       "inColor": true,
-      "awards": ["Best Screenplay Cannes"]
+      "awards": ["Best Screenplay Cannes"],
+      "image": "https://image.tmdb.org/t/p/w500/e4DGlsc9g0h5AyoyvvAuIRnofN7.jpg"
     },
     {
       "id": 4,
@@ -268,7 +285,8 @@
       "durationMinutes": 119,
       "genre": "Drama",
       "inColor": true,
-      "awards": ["Grand Jury Prize Venice", "BAFTA Best Film"]
+      "awards": ["Grand Jury Prize Venice", "BAFTA Best Film"],
+      "image": "https://image.tmdb.org/t/p/w500/cwBq0onfmeilU5xgqNNjJAMPfpw.jpg"
     },
     {
       "id": 5,
@@ -279,7 +297,8 @@
       "durationMinutes": 146,
       "genre": "Horror",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg"
     },
     {
       "id": 6,
@@ -290,7 +309,8 @@
       "durationMinutes": 136,
       "genre": "SciFi",
       "inColor": true,
-      "awards": ["BAFTA Best Direction"]
+      "awards": ["BAFTA Best Direction"],
+      "image": "https://image.tmdb.org/t/p/w500/4sHeTAp65WrSSuc05nRBKddhBxO.jpg"
     },
     {
       "id": 7,
@@ -301,7 +321,8 @@
       "durationMinutes": 116,
       "genre": "Drama",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/kMKyx1k8hWWscYFnPbnxxN4Eqo4.jpg"
     },
     {
       "id": 8,
@@ -312,7 +333,8 @@
       "durationMinutes": 147,
       "genre": "Thriller",
       "inColor": true,
-      "awards": ["Best Director Cannes"]
+      "awards": ["Best Director Cannes"],
+      "image": "https://image.tmdb.org/t/p/w500/x7A59t6ySylr1L7aubOQEA480vM.jpg"
     },
     {
       "id": 9,
@@ -323,7 +345,8 @@
       "durationMinutes": 120,
       "genre": "Thriller",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/6v1zYh2FKOYVddY5pCQhd4PO9uX.jpg"
     },
     {
       "id": 10,
@@ -334,7 +357,8 @@
       "durationMinutes": 110,
       "genre": "Horror",
       "inColor": false,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/f1tIYarTbkBdIT1aW0gzelDwknv.jpg"
     },
     {
       "id": 11,
@@ -345,7 +369,8 @@
       "durationMinutes": 137,
       "genre": "Action",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/aSSJMnHknzKjlZ6zybwD7eyJ4Po.jpg"
     },
     {
       "id": 12,
@@ -356,7 +381,8 @@
       "durationMinutes": 92,
       "genre": "Horror",
       "inColor": true,
-      "awards": ["Best Director Sundance"]
+      "awards": ["Best Director Sundance"],
+      "image": "https://image.tmdb.org/t/p/w500/zap5hpFCWSvdWSuPGAQyjUv2wAC.jpg"
     },
     {
       "id": 13,
@@ -367,7 +393,8 @@
       "durationMinutes": 90,
       "genre": "Drama",
       "inColor": false,
-      "awards": ["Silver Bear Berlin"]
+      "awards": ["Silver Bear Berlin"],
+      "image": "https://image.tmdb.org/t/p/w500/9Wx0Wdn2EOqeCZU4SP6tlS3LOml.jpg"
     },
     {
       "id": 14,
@@ -378,7 +405,8 @@
       "durationMinutes": 85,
       "genre": "Drama",
       "inColor": false,
-      "awards": ["Special Jury Prize Venice"]
+      "awards": ["Special Jury Prize Venice"],
+      "image": "https://image.tmdb.org/t/p/w500/A0BjScjASfMFgyGI5sU0CwfKh3l.jpg"
     },
     {
       "id": 15,
@@ -389,7 +417,8 @@
       "durationMinutes": 110,
       "genre": "Romance",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/i124H6iQB4CawrgFW9aZaZs7OBO.jpg"
     },
     {
       "id": 16,
@@ -400,7 +429,8 @@
       "durationMinutes": 148,
       "genre": "SciFi",
       "inColor": true,
-      "awards": ["Academy Award Best Cinematography"]
+      "awards": ["Academy Award Best Cinematography"],
+      "image": "https://image.tmdb.org/t/p/w500/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg"
     },
     {
       "id": 17,
@@ -411,7 +441,8 @@
       "durationMinutes": 152,
       "genre": "Action",
       "inColor": true,
-      "awards": ["Academy Award Best Supporting Actor"]
+      "awards": ["Academy Award Best Supporting Actor"],
+      "image": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
     },
     {
       "id": 18,
@@ -422,7 +453,8 @@
       "durationMinutes": 169,
       "genre": "SciFi",
       "inColor": true,
-      "awards": ["Academy Award Best Visual Effects"]
+      "awards": ["Academy Award Best Visual Effects"],
+      "image": "https://image.tmdb.org/t/p/w500/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg"
     },
     {
       "id": 19,
@@ -433,7 +465,8 @@
       "durationMinutes": 155,
       "genre": "SciFi",
       "inColor": true,
-      "awards": ["Academy Award Best Cinematography"]
+      "awards": ["Academy Award Best Cinematography"],
+      "image": "https://image.tmdb.org/t/p/w500/gDzOcq0pfeCeqMBwKIJlSmQpjkZ.jpg"
     },
     {
       "id": 20,
@@ -444,7 +477,8 @@
       "durationMinutes": 164,
       "genre": "SciFi",
       "inColor": true,
-      "awards": ["Academy Award Best Cinematography", "Academy Award Best Visual Effects"]
+      "awards": ["Academy Award Best Cinematography", "Academy Award Best Visual Effects"],
+      "image": "https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg"
     },
     {
       "id": 21,
@@ -455,7 +489,8 @@
       "durationMinutes": 116,
       "genre": "SciFi",
       "inColor": true,
-      "awards": ["Academy Award Best Sound Editing"]
+      "awards": ["Academy Award Best Sound Editing"],
+      "image": "https://image.tmdb.org/t/p/w500/pEzNVQfdzYDzVK0XqxERIw2x2se.jpg"
     },
     {
       "id": 22,
@@ -466,7 +501,8 @@
       "durationMinutes": 100,
       "genre": "Comedy",
       "inColor": true,
-      "awards": ["Grand Jury Prize Berlin", "Academy Award Best Costume Design"]
+      "awards": ["Grand Jury Prize Berlin", "Academy Award Best Costume Design"],
+      "image": "https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg"
     },
     {
       "id": 23,
@@ -477,7 +513,8 @@
       "durationMinutes": 110,
       "genre": "Comedy",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/nG7hZJn7wQTSDCQT39Gy3s3tbrp.jpg"
     },
     {
       "id": 24,
@@ -488,7 +525,8 @@
       "durationMinutes": 154,
       "genre": "Drama",
       "inColor": true,
-      "awards": ["Palme d'Or Cannes", "Academy Award Best Original Screenplay"]
+      "awards": ["Palme d'Or Cannes", "Academy Award Best Original Screenplay"],
+      "image": "https://image.tmdb.org/t/p/w500/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg"
     },
     {
       "id": 25,
@@ -499,7 +537,8 @@
       "durationMinutes": 111,
       "genre": "Action",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/v7TaX8kXMXs5yFFGR41guUDNcnB.jpg"
     },
     {
       "id": 26,
@@ -510,7 +549,8 @@
       "durationMinutes": 146,
       "genre": "Crime",
       "inColor": true,
-      "awards": ["Academy Award Best Supporting Actor", "BAFTA Best Director"]
+      "awards": ["Academy Award Best Supporting Actor", "BAFTA Best Director"],
+      "image": "https://image.tmdb.org/t/p/w500/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg"
     },
     {
       "id": 27,
@@ -521,7 +561,8 @@
       "durationMinutes": 114,
       "genre": "Thriller",
       "inColor": true,
-      "awards": ["Palme d'Or Cannes"]
+      "awards": ["Palme d'Or Cannes"],
+      "image": "https://image.tmdb.org/t/p/w500/ekstpH614fwDX8DUln1a2Opz0N8.jpg"
     },
     {
       "id": 28,
@@ -532,7 +573,8 @@
       "durationMinutes": 132,
       "genre": "Thriller",
       "inColor": true,
-      "awards": ["Palme d'Or Cannes", "Academy Award Best Picture", "Academy Award Best Director"]
+      "awards": ["Palme d'Or Cannes", "Academy Award Best Picture", "Academy Award Best Director"],
+      "image": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
     },
     {
       "id": 29,
@@ -543,7 +585,8 @@
       "durationMinutes": 132,
       "genre": "Crime",
       "inColor": true,
-      "awards": []
+      "awards": [],
+      "image": "https://image.tmdb.org/t/p/w500/dsEoTJKM1s5OVDkS2P2JdoTxo4K.jpg"
     },
     {
       "id": 30,
@@ -554,7 +597,8 @@
       "durationMinutes": 135,
       "genre": "Drama",
       "inColor": false,
-      "awards": ["Golden Lion Venice", "Academy Award Best Director", "Academy Award Best Cinematography"]
+      "awards": ["Golden Lion Venice", "Academy Award Best Director", "Academy Award Best Cinematography"],
+      "image": "https://image.tmdb.org/t/p/w500/dtIIyQyALk57ko5bjac7hi01YQ.jpg"
     },
     {
       "id": 31,
@@ -565,7 +609,8 @@
       "durationMinutes": 162,
       "genre": "SciFi",
       "inColor": true,
-      "awards": ["Special Jury Prize Cannes"]
+      "awards": ["Special Jury Prize Cannes"],
+      "image": "https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg"
     },
     {
       "id": 32,
@@ -576,7 +621,8 @@
       "durationMinutes": 121,
       "genre": "Romance",
       "inColor": true,
-      "awards": ["Best Screenplay Cannes", "Queer Palm Cannes"]
+      "awards": ["Best Screenplay Cannes", "Queer Palm Cannes"],
+      "image": "https://image.tmdb.org/t/p/w500/2LquGwEhbg3soxSCs9VNyh5VJd9.jpg"
     },
     {
       "id": 33,
@@ -587,7 +633,8 @@
       "durationMinutes": 120,
       "genre": "Thriller",
       "inColor": true,
-      "awards": ["Grand Prix Cannes"]
+      "awards": ["Grand Prix Cannes"],
+      "image": "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg"
     },
     {
       "id": 34,
@@ -598,7 +645,8 @@
       "durationMinutes": 102,
       "genre": "Romance",
       "inColor": true,
-      "awards": ["Academy Award Best Original Screenplay", "Golden Globe Best Musical or Comedy"]
+      "awards": ["Academy Award Best Original Screenplay", "Golden Globe Best Musical or Comedy"],
+      "image": "https://image.tmdb.org/t/p/w500/3jCLmYDIIiSMPujbwygNpqdpM8N.jpg"
     }
   ]
 }
