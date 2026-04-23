@@ -1,13 +1,16 @@
 package be.howest.filmapp
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,8 +22,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -40,7 +41,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -73,6 +76,7 @@ fun DirectorSpaceApp() {
 
     val director = directors[currentIndex]
     val filmCount = remember(director.id) { getFilmCountForDirector(director.id) }
+    val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     Scaffold(
         topBar = {
@@ -85,120 +89,28 @@ fun DirectorSpaceApp() {
             )
         }
     ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(horizontal = 16.dp)
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp),
-                shape = RoundedCornerShape(16.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-            ) {
-                AsyncImage(
-                    model = director.imageUrl,
-                    contentDescription = director.name,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = director.name,
-                        style = MaterialTheme.typography.headlineMedium,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "${director.country}  •  Born ${director.birthDate}",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = "⭐ ${director.rating}/10",
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Spacer(modifier = Modifier.width(12.dp))
-                        Surface(
-                            color = if (director.active) MaterialTheme.colorScheme.primaryContainer
-                            else MaterialTheme.colorScheme.errorContainer,
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-                            Text(
-                                text = if (director.active) "Active" else "Inactive",
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                color = if (director.active) MaterialTheme.colorScheme.onPrimaryContainer
-                                else MaterialTheme.colorScheme.onErrorContainer,
-                                style = MaterialTheme.typography.labelMedium
-                            )
-                        }
-                    }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "🎬 $filmCount ${if (filmCount == 1) "film" else "films"}",
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.secondary
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Button(
-                    onClick = { currentIndex-- },
-                    enabled = currentIndex > 0
-                ) {
-                    Text("← Previous")
-                }
-
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    OutlinedButton(onClick = { showEditDialog = true }) {
-                        Text("Edit Rating")
-                    }
-                    Text(
-                        text = "${currentIndex + 1} / ${directors.size}",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-
-                Button(
-                    onClick = { currentIndex++ },
-                    enabled = currentIndex < directors.size - 1
-                ) {
-                    Text("Next →")
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
+        if (isLandscape) {
+            LandscapeLayout(
+                director = director,
+                filmCount = filmCount,
+                currentIndex = currentIndex,
+                directorCount = directors.size,
+                onPrevious = { currentIndex-- },
+                onNext = { currentIndex++ },
+                onEdit = { showEditDialog = true },
+                modifier = Modifier.padding(innerPadding)
+            )
+        } else {
+            PortraitLayout(
+                director = director,
+                filmCount = filmCount,
+                currentIndex = currentIndex,
+                directorCount = directors.size,
+                onPrevious = { currentIndex-- },
+                onNext = { currentIndex++ },
+                onEdit = { showEditDialog = true },
+                modifier = Modifier.padding(innerPadding)
+            )
         }
     }
 
@@ -213,6 +125,226 @@ fun DirectorSpaceApp() {
                 showEditDialog = false
             }
         )
+    }
+}
+
+// Section 1: Artwork Wall
+@Composable
+fun ArtworkWall(director: Director, modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier,
+        tonalElevation = 4.dp,
+        shadowElevation = 16.dp,
+        shape = RoundedCornerShape(4.dp)
+    ) {
+        AsyncImage(
+            model = director.imageUrl,
+            contentDescription = director.name,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxSize()
+                .border(
+                    width = 2.dp,
+                    color = MaterialTheme.colorScheme.outlineVariant,
+                    shape = RoundedCornerShape(4.dp)
+                )
+        )
+    }
+}
+
+// Section 2: Artwork Descriptor
+@Composable
+fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        shape = RoundedCornerShape(8.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = director.name,
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = director.nationality,
+                style = MaterialTheme.typography.bodyLarge,
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "Born ${director.birthDate}  •  ${director.country}",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "⭐ ${director.rating}/10",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Surface(
+                    color = if (director.active) MaterialTheme.colorScheme.primaryContainer
+                    else MaterialTheme.colorScheme.errorContainer,
+                    shape = RoundedCornerShape(6.dp)
+                ) {
+                    Text(
+                        text = if (director.active) "Active" else "Inactive",
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
+                        color = if (director.active) MaterialTheme.colorScheme.onPrimaryContainer
+                        else MaterialTheme.colorScheme.onErrorContainer,
+                        style = MaterialTheme.typography.labelMedium
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = "🎬 $filmCount ${if (filmCount == 1) "film" else "films"}",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.secondary
+            )
+        }
+    }
+}
+
+// Section 3: Display Controller
+@Composable
+fun DisplayController(
+    currentIndex: Int,
+    directorCount: Int,
+    onPrevious: () -> Unit,
+    onNext: () -> Unit,
+    onEdit: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Button(
+                onClick = onPrevious,
+                enabled = currentIndex > 0,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("← Previous")
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            OutlinedButton(
+                onClick = onEdit,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Edit Rating")
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Button(
+                onClick = onNext,
+                enabled = currentIndex < directorCount - 1,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Next →")
+            }
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = "${currentIndex + 1} / $directorCount",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+@Composable
+fun PortraitLayout(
+    director: Director,
+    filmCount: Int,
+    currentIndex: Int,
+    directorCount: Int,
+    onPrevious: () -> Unit,
+    onNext: () -> Unit,
+    onEdit: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        ArtworkWall(
+            director = director,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(320.dp)
+        )
+        ArtworkDescriptor(
+            director = director,
+            filmCount = filmCount,
+            modifier = Modifier.fillMaxWidth()
+        )
+        DisplayController(
+            currentIndex = currentIndex,
+            directorCount = directorCount,
+            onPrevious = onPrevious,
+            onNext = onNext,
+            onEdit = onEdit,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
+@Composable
+fun LandscapeLayout(
+    director: Director,
+    filmCount: Int,
+    currentIndex: Int,
+    directorCount: Int,
+    onPrevious: () -> Unit,
+    onNext: () -> Unit,
+    onEdit: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        ArtworkWall(
+            director = director,
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+        )
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            ArtworkDescriptor(
+                director = director,
+                filmCount = filmCount,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            DisplayController(
+                currentIndex = currentIndex,
+                directorCount = directorCount,
+                onPrevious = onPrevious,
+                onNext = onNext,
+                onEdit = onEdit,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
