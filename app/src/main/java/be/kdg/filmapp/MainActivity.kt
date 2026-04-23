@@ -1,11 +1,10 @@
-package be.howest.filmapp
+package be.kdg.filmapp
 
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,7 +45,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import be.howest.filmapp.model.Director
 import be.howest.filmapp.model.getDirectors
@@ -69,8 +67,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DirectorSpaceApp() {
-    val initialDirectors = remember { getDirectors().toList() }
-    var directors by remember { mutableStateOf(initialDirectors) }
+    var directors by remember { mutableStateOf(getDirectors().toList()) }
     var currentIndex by remember { mutableIntStateOf(0) }
     var showEditDialog by remember { mutableStateOf(false) }
 
@@ -128,7 +125,6 @@ fun DirectorSpaceApp() {
     }
 }
 
-// Section 1: Artwork Wall
 @Composable
 fun ArtworkWall(director: Director, modifier: Modifier = Modifier) {
     Surface(
@@ -141,18 +137,11 @@ fun ArtworkWall(director: Director, modifier: Modifier = Modifier) {
             model = director.imageUrl,
             contentDescription = director.name,
             contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxSize()
-                .border(
-                    width = 2.dp,
-                    color = MaterialTheme.colorScheme.outlineVariant,
-                    shape = RoundedCornerShape(4.dp)
-                )
+            modifier = Modifier.fillMaxSize()
         )
     }
 }
 
-// Section 2: Artwork Descriptor
 @Composable
 fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = Modifier) {
     Surface(
@@ -210,7 +199,6 @@ fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = M
     }
 }
 
-// Section 3: Display Controller
 @Composable
 fun DisplayController(
     currentIndex: Int,
@@ -223,8 +211,7 @@ fun DisplayController(
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Button(
                 onClick = onPrevious,
@@ -233,14 +220,12 @@ fun DisplayController(
             ) {
                 Text("← Previous")
             }
-            Spacer(modifier = Modifier.width(8.dp))
             OutlinedButton(
                 onClick = onEdit,
                 modifier = Modifier.weight(1f)
             ) {
                 Text("Edit Rating")
             }
-            Spacer(modifier = Modifier.width(8.dp))
             Button(
                 onClick = onNext,
                 enabled = currentIndex < directorCount - 1,
@@ -253,8 +238,7 @@ fun DisplayController(
         Text(
             text = "${currentIndex + 1} / $directorCount",
             style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }
@@ -335,7 +319,6 @@ fun LandscapeLayout(
                 filmCount = filmCount,
                 modifier = Modifier.fillMaxWidth()
             )
-            Spacer(modifier = Modifier.height(16.dp))
             DisplayController(
                 currentIndex = currentIndex,
                 directorCount = directorCount,

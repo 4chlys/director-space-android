@@ -1,4 +1,4 @@
-package be.howest.filmapp.ui.theme
+package be.kdg.filmapp.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

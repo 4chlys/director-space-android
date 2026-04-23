@@ -1,4 +1,4 @@
-package be.howest.filmapp.ui.theme
+package be.kdg.filmapp.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

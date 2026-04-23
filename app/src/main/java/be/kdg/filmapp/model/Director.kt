@@ -1,4 +1,4 @@
-package be.howest.filmapp.model
+package be.kdg.filmapp.model
 
 data class Director(
     val id: Int,

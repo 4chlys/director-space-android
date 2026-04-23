@@ -1,4 +1,4 @@
-package be.howest.filmapp.model
+package be.kdg.filmapp.model
 
 enum class Genre {
     Drama, Comedy, Thriller, Horror, SciFi, Action, Crime, Romance,

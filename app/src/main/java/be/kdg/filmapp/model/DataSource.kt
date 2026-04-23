@@ -1,4 +1,4 @@
-package be.howest.filmapp.model
+package be.kdg.filmapp.model
 
 fun getDirectors(): Array<Director> = arrayOf(
     Director(1, "Yorgos Lanthimos", "Greece", "1973-09-23", 2001, null, true, 8.1,
