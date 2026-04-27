@@ -215,4 +215,20 @@
     <MESSAGE value="Addition of gitignore" />
     <option name="LAST_COMMIT_MESSAGE" value="Addition of gitignore" />
   </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="be.howest.filmapp">
+          <value>
+            <CheckInfo lastCheckTimestamp="1776931976934" />
+          </value>
+        </entry>
+        <entry key="be.howest.filmapp.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1776931976935" />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
 </project>

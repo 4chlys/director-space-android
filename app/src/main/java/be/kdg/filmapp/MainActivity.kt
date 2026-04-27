@@ -32,8 +32,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -41,15 +41,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import be.howest.filmapp.model.Director
-import be.howest.filmapp.model.getDirectors
-import be.howest.filmapp.model.getFilmCountForDirector
-import be.howest.filmapp.ui.theme.FilmAppTheme
+import androidx.lifecycle.viewmodel.compose.viewModel
+import be.kdg.filmapp.model.Director
+import be.kdg.filmapp.model.getFilmCountForDirector
+import be.kdg.filmapp.ui.theme.FilmAppTheme
 import coil3.compose.AsyncImage
 
 class MainActivity : ComponentActivity() {
@@ -66,12 +67,9 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DirectorSpaceApp() {
-    var directors by remember { mutableStateOf(getDirectors().toList()) }
-    var currentIndex by remember { mutableIntStateOf(0) }
-    var showEditDialog by remember { mutableStateOf(false) }
-
-    val director = directors[currentIndex]
+fun DirectorSpaceApp(viewModel: DirectorViewModel = viewModel()) {
+    val uiState by viewModel.uiState.collectAsState()
+    val director = uiState.currentDirector
     val filmCount = remember(director.id) { getFilmCountForDirector(director.id) }
     val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
 
@@ -90,37 +88,32 @@ fun DirectorSpaceApp() {
             LandscapeLayout(
                 director = director,
                 filmCount = filmCount,
-                currentIndex = currentIndex,
-                directorCount = directors.size,
-                onPrevious = { currentIndex-- },
-                onNext = { currentIndex++ },
-                onEdit = { showEditDialog = true },
+                currentIndex = uiState.currentIndex,
+                directorCount = uiState.directors.size,
+                onPrevious = viewModel::goToPrevious,
+                onNext = viewModel::goToNext,
+                onEdit = viewModel::showEditDialog,
                 modifier = Modifier.padding(innerPadding)
             )
         } else {
             PortraitLayout(
                 director = director,
                 filmCount = filmCount,
-                currentIndex = currentIndex,
-                directorCount = directors.size,
-                onPrevious = { currentIndex-- },
-                onNext = { currentIndex++ },
-                onEdit = { showEditDialog = true },
+                currentIndex = uiState.currentIndex,
+                directorCount = uiState.directors.size,
+                onPrevious = viewModel::goToPrevious,
+                onNext = viewModel::goToNext,
+                onEdit = viewModel::showEditDialog,
                 modifier = Modifier.padding(innerPadding)
             )
         }
     }
 
-    if (showEditDialog) {
+    if (uiState.showEditDialog) {
         EditRatingDialog(
             director = director,
-            onDismiss = { showEditDialog = false },
-            onConfirm = { newRating ->
-                directors = directors.toMutableList().also {
-                    it[currentIndex] = director.copy(rating = newRating)
-                }
-                showEditDialog = false
-            }
+            onDismiss = viewModel::dismissEditDialog,
+            onConfirm = viewModel::updateRating
         )
     }
 }
@@ -135,7 +128,7 @@ fun ArtworkWall(director: Director, modifier: Modifier = Modifier) {
     ) {
         AsyncImage(
             model = director.imageUrl,
-            contentDescription = director.name,
+            contentDescription = stringResource(R.string.director_image_description, director.name),
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
@@ -144,6 +137,12 @@ fun ArtworkWall(director: Director, modifier: Modifier = Modifier) {
 
 @Composable
 fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = Modifier) {
+    val careerString = if (director.active) {
+        stringResource(R.string.career_active, director.careerStart)
+    } else {
+        stringResource(R.string.career_ended, director.careerStart, director.careerEnd!!)
+    }
+
     Surface(
         modifier = modifier,
         color = MaterialTheme.colorScheme.surfaceVariant,
@@ -164,14 +163,20 @@ fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = M
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "Born ${director.birthDate}  •  ${director.country}",
+                text = stringResource(R.string.born_info, director.birthDate, director.country),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = careerString,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(8.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = "⭐ ${director.rating}/10",
+                    text = stringResource(R.string.rating_display, director.rating),
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Spacer(modifier = Modifier.width(12.dp))
@@ -181,7 +186,8 @@ fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = M
                     shape = RoundedCornerShape(6.dp)
                 ) {
                     Text(
-                        text = if (director.active) "Active" else "Inactive",
+                        text = if (director.active) stringResource(R.string.active)
+                        else stringResource(R.string.inactive),
                         modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
                         color = if (director.active) MaterialTheme.colorScheme.onPrimaryContainer
                         else MaterialTheme.colorScheme.onErrorContainer,
@@ -191,7 +197,7 @@ fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = M
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "🎬 $filmCount ${if (filmCount == 1) "film" else "films"}",
+                text = pluralStringResource(R.plurals.film_count, filmCount, filmCount),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.secondary
             )
@@ -218,25 +224,25 @@ fun DisplayController(
                 enabled = currentIndex > 0,
                 modifier = Modifier.weight(1f)
             ) {
-                Text("← Previous")
+                Text(stringResource(R.string.previous))
             }
             OutlinedButton(
                 onClick = onEdit,
                 modifier = Modifier.weight(1f)
             ) {
-                Text("Edit Rating")
+                Text(stringResource(R.string.edit_rating))
             }
             Button(
                 onClick = onNext,
                 enabled = currentIndex < directorCount - 1,
                 modifier = Modifier.weight(1f)
             ) {
-                Text("Next →")
+                Text(stringResource(R.string.next))
             }
         }
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = "${currentIndex + 1} / $directorCount",
+            text = stringResource(R.string.counter, currentIndex + 1, directorCount),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -342,15 +348,15 @@ fun EditRatingDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Edit Rating") },
+        title = { Text(stringResource(R.string.edit_rating)) },
         text = {
             Column {
-                Text("Update rating for ${director.name}")
+                Text(stringResource(R.string.edit_rating_message, director.name))
                 Spacer(modifier = Modifier.height(12.dp))
                 OutlinedTextField(
                     value = input,
                     onValueChange = { input = it },
-                    label = { Text("Rating (0.0 – 10.0)") },
+                    label = { Text(stringResource(R.string.rating_range_label)) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     isError = !isValid,
                     singleLine = true
@@ -362,11 +368,13 @@ fun EditRatingDialog(
                 onClick = { onConfirm(input.toDouble()) },
                 enabled = isValid
             ) {
-                Text("Save")
+                Text(stringResource(R.string.save))
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.cancel))
+            }
         }
     )
 }

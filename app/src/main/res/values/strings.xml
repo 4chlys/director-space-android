@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FilmApp</string>
+    <string name="previous">&#8592; Previous</string>
+    <string name="next">Next &#8594;</string>
+    <string name="edit_rating">Edit Rating</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="active">Active</string>
+    <string name="inactive">Inactive</string>
+    <string name="rating_range_label">Rating (0.0 – 10.0)</string>
+    <string name="edit_rating_message">Update rating for %1$s</string>
+    <string name="born_info">Born %1$s  •  %2$s</string>
+    <string name="rating_display">⭐ %1$.1f/10</string>
+    <string name="career_active">Career: %1$d – present</string>
+    <string name="career_ended">Career: %1$d – %2$d</string>
+    <string name="counter">%1$d / %2$d</string>
+    <string name="director_image_description">%1$s portrait</string>
+    <plurals name="film_count">
+        <item quantity="one">🎬 %1$d film</item>
+        <item quantity="other">🎬 %1$d films</item>
+    </plurals>
 </resources>
