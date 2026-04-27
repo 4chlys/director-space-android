@@ -1,15 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "be.howest.filmapp"
+    namespace = "be.kdg.filmapp"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "be.howest.filmapp"
+        applicationId = "be.kdg.filmapp"
         minSdk = 29
         targetSdk = 36
         versionCode = 1
