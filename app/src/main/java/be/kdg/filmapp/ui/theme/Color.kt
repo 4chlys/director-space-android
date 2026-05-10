@@ -2,10 +2,13 @@ package be.kdg.filmapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650A4)
-val PurpleGrey40 = Color(0xFF625B71)
-val Pink40 = Color(0xFF7D5260)
+val VelvetBackground    = Color(0xFF1C1B2E)
+val VelvetContainer     = Color(0xFF252438)
+val VelvetPrimary       = Color(0xFF7B2D8B)
+val VelvetSecondary     = Color(0xFF4A1FD4)
+val VelvetOnPrimary     = Color(0xFFFFFFFF)
+val VelvetAccent        = Color(0xFFC084FC)
+val VelvetOnSurface     = Color(0xFFE0D4F7)
+val VelvetMuted         = Color(0xFFA89EC9)
+val VelvetError         = Color(0xFFCF6679)
+val VelvetOnError       = Color(0xFFFFFFFF)
