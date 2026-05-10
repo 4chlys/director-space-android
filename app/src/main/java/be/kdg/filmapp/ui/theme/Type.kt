@@ -19,6 +19,12 @@ val Typography = Typography(
         fontSize      = 24.sp,
         letterSpacing = 0.5.sp,
     ),
+    headlineSmall = TextStyle(
+        fontFamily    = FontFamily.Default,
+        fontWeight    = FontWeight.Black,
+        fontSize      = 20.sp,
+        letterSpacing = 0.5.sp,
+    ),
     titleLarge = TextStyle(
         fontFamily    = FontFamily.Default,
         fontWeight    = FontWeight.Bold,

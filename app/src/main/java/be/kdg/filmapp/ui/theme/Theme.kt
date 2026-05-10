@@ -19,6 +19,8 @@ private val DarkColorScheme = darkColorScheme(
     onSurfaceVariant    = VelvetMuted,
     error               = VelvetError,
     onError             = VelvetOnError,
+    errorContainer      = VelvetContainer,
+    onErrorContainer    = VelvetError,
 )
 
 @Composable
