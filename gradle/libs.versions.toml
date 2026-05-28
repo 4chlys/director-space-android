@@ -5,6 +5,7 @@ coreKtx = "1.16.0"
 lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.8.2"
 composeBom = "2025.12.00"
+navigationCompose = "2.9.0"
 coil = "3.1.0"
 
 [libraries]
@@ -21,6 +22,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-compose-material-icons = { group = "androidx.compose.material", name = "material-icons-core" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
