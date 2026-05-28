@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 import be.kdg.filmapp.R
 import be.kdg.filmapp.ui.EditDirectorDialog
 import be.kdg.filmapp.ui.EditFilmDialog
@@ -29,7 +29,7 @@ import be.kdg.filmapp.ui.viewmodel.DirectorDetailViewModel
 
 @Composable
 fun DirectorDetailScreen(
-    viewModel: DirectorDetailViewModel = viewModel(factory = DirectorDetailViewModel.Factory)
+    viewModel: DirectorDetailViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 

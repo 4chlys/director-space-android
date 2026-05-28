@@ -31,7 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 import be.kdg.filmapp.R
 import be.kdg.filmapp.model.Director
 import be.kdg.filmapp.ui.viewmodel.DirectorListViewModel
@@ -40,7 +40,7 @@ import coil3.compose.AsyncImage
 @Composable
 fun DirectorListScreen(
     onDirectorClick: (Int) -> Unit,
-    viewModel: DirectorListViewModel = viewModel(factory = DirectorListViewModel.Factory)
+    viewModel: DirectorListViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 

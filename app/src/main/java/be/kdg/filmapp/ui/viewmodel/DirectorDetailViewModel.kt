@@ -3,12 +3,7 @@ package be.kdg.filmapp.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import be.kdg.filmapp.data.di.AppModule
 import be.kdg.filmapp.data.repository.DirectorRepository
 import be.kdg.filmapp.data.repository.FilmRepository
 import be.kdg.filmapp.model.Director
@@ -48,12 +43,6 @@ class DirectorDetailViewModel(
 
     companion object {
         private const val TAG = "DirectorDetailViewModel"
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val savedStateHandle = createSavedStateHandle()
-                DirectorDetailViewModel(savedStateHandle, AppModule.directorRepository, AppModule.filmRepository)
-            }
-        }
     }
 
     init { load() }

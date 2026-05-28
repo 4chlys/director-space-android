@@ -2,11 +2,7 @@ package be.kdg.filmapp.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import be.kdg.filmapp.data.di.AppModule
 import be.kdg.filmapp.data.repository.DirectorRepository
 import be.kdg.filmapp.model.Director
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,9 +26,6 @@ class DirectorListViewModel(
 
     companion object {
         private const val TAG = "DirectorListViewModel"
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer { DirectorListViewModel(AppModule.directorRepository) }
-        }
     }
 
     init { loadDirectors() }
