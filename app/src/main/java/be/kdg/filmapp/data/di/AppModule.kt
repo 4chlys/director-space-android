@@ -1,11 +1,14 @@
 package be.kdg.filmapp.data.di
 
+import android.content.Context
 import be.kdg.filmapp.data.api.DirectorApiService
 import be.kdg.filmapp.data.api.FilmApiService
+import be.kdg.filmapp.data.repository.DataStoreSettingsRepository
 import be.kdg.filmapp.data.repository.DirectorRepository
 import be.kdg.filmapp.data.repository.FilmRepository
 import be.kdg.filmapp.data.repository.RestDirectorRepository
 import be.kdg.filmapp.data.repository.RestFilmRepository
+import be.kdg.filmapp.data.repository.SettingsRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -45,4 +48,8 @@ class AppModule {
     @Single
     fun provideFilmRepository(api: FilmApiService): FilmRepository =
         RestFilmRepository(api)
+
+    @Single
+    fun provideSettingsRepository(context: Context): SettingsRepository =
+        DataStoreSettingsRepository(context)
 }

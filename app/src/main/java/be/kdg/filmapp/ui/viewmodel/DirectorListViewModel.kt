@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import be.kdg.filmapp.data.repository.DirectorRepository
+import be.kdg.filmapp.data.repository.SettingsRepository
 import be.kdg.filmapp.model.Director
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +19,8 @@ data class DirectorListUiState(
 )
 
 class DirectorListViewModel(
-    private val directorRepository: DirectorRepository
+    private val directorRepository: DirectorRepository,
+    private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(DirectorListUiState())
@@ -28,14 +30,21 @@ class DirectorListViewModel(
         private const val TAG = "DirectorListViewModel"
     }
 
-    init { loadDirectors() }
+    init {
+        viewModelScope.launch {
+            settingsRepository.showOnlyActive.collect { filterActive ->
+                loadDirectors(filterActive)
+            }
+        }
+    }
 
-    fun loadDirectors() {
+    fun loadDirectors(filterActive: Boolean = false) {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, error = null) }
             try {
-                val list = directorRepository.getAll()
-                Log.i(TAG, "Loaded ${list.size} directors")
+                val all = directorRepository.getAll()
+                val list = if (filterActive) all.filter { it.active } else all
+                Log.i(TAG, "Loaded ${list.size} directors (filterActive=$filterActive)")
                 _uiState.update { it.copy(directors = list, isLoading = false) }
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to load directors", e)

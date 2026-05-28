@@ -52,4 +52,8 @@
     <string name="field_duration">Duration (min)</string>
     <string name="field_in_color">In Colour</string>
     <string name="field_awards">Awards (comma-separated)</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_preferences">Preferences</string>
+    <string name="settings_show_only_active">Show only active directors</string>
+    <string name="settings_show_only_active_hint">Hides directors who have retired</string>
 </resources>
