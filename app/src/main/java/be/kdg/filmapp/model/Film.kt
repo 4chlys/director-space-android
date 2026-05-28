@@ -1,10 +1,14 @@
 package be.kdg.filmapp.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Genre {
     Drama, Comedy, Thriller, Horror, SciFi, Action, Crime, Romance,
     Historical, Experimental, Mystery, Family
 }
 
+@Serializable
 data class Film(
     val id: Int,
     val directorId: Int,

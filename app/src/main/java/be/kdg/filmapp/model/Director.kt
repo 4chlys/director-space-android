@@ -1,5 +1,8 @@
 package be.kdg.filmapp.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Director(
     val id: Int,
     val name: String,
