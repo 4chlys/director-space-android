@@ -66,8 +66,13 @@ class DirectorDetailViewModel(
     private fun reloadFilms() {
         viewModelScope.launch {
             _uiState.value.currentDirector?.let { director ->
-                val films = filmRepository.getFilmsForDirector(director.id)
-                _uiState.update { it.copy(films = films) }
+                try {
+                    val films = filmRepository.getFilmsForDirector(director.id)
+                    _uiState.update { it.copy(films = films) }
+                } catch (e: Exception) {
+                    Log.e(TAG, "Failed to load films for current director", e)
+                    _uiState.update { it.copy(error = e.message) }
+                }
             }
         }
     }
@@ -78,8 +83,13 @@ class DirectorDetailViewModel(
             val newIndex = state.currentIndex - 1
             _uiState.update { it.copy(currentIndex = newIndex, films = emptyList()) }
             viewModelScope.launch {
-                val films = filmRepository.getFilmsForDirector(state.directors[newIndex].id)
-                _uiState.update { it.copy(films = films) }
+                try {
+                    val films = filmRepository.getFilmsForDirector(state.directors[newIndex].id)
+                    _uiState.update { it.copy(films = films) }
+                } catch (e: Exception) {
+                    Log.e(TAG, "Failed to load films for previous director", e)
+                    _uiState.update { it.copy(error = e.message) }
+                }
             }
             Log.d(TAG, "Previous: ${state.directors[newIndex].name}")
         }
@@ -91,8 +101,13 @@ class DirectorDetailViewModel(
             val newIndex = state.currentIndex + 1
             _uiState.update { it.copy(currentIndex = newIndex, films = emptyList()) }
             viewModelScope.launch {
-                val films = filmRepository.getFilmsForDirector(state.directors[newIndex].id)
-                _uiState.update { it.copy(films = films) }
+                try {
+                    val films = filmRepository.getFilmsForDirector(state.directors[newIndex].id)
+                    _uiState.update { it.copy(films = films) }
+                } catch (e: Exception) {
+                    Log.e(TAG, "Failed to load films for next director", e)
+                    _uiState.update { it.copy(error = e.message) }
+                }
             }
             Log.d(TAG, "Next: ${state.directors[newIndex].name}")
         }

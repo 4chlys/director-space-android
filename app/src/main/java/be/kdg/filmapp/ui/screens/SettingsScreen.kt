@@ -41,12 +41,12 @@ fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
         Spacer(Modifier.height(4.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             LanguageButton(
-                label = "English",
+                label = stringResource(R.string.language_english),
                 selected = language == "en",
                 onClick = { viewModel.setLanguage("en") }
             )
             LanguageButton(
-                label = "Nederlands",
+                label = stringResource(R.string.language_dutch),
                 selected = language == "nl",
                 onClick = { viewModel.setLanguage("nl") }
             )

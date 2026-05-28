@@ -52,6 +52,8 @@
     <string name="field_duration">Duur (min)</string>
     <string name="field_in_color">In kleur</string>
     <string name="field_awards">Prijzen (komma-gescheiden)</string>
+    <string name="language_english">English</string>
+    <string name="language_dutch">Nederlands</string>
     <string name="settings_language">Taal</string>
     <string name="settings_preferences">Voorkeuren</string>
     <string name="settings_show_only_active">Alleen actieve regisseurs tonen</string>
