@@ -38,4 +38,18 @@
         <item quantity="one">🎬 %1$d film</item>
         <item quantity="other">🎬 %1$d films</item>
     </plurals>
+    <string name="retry">Retry</string>
+    <string name="screen_director_list">Directors</string>
+    <string name="screen_director_detail">Director</string>
+    <string name="screen_settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="add_film">Add Film</string>
+    <string name="edit_film">Edit Film</string>
+    <string name="delete_film">Delete Film</string>
+    <string name="error_director_not_found">Director not found</string>
+    <string name="field_title">Title</string>
+    <string name="field_release_year">Release Year</string>
+    <string name="field_duration">Duration (min)</string>
+    <string name="field_in_color">In Colour</string>
+    <string name="field_awards">Awards (comma-separated)</string>
 </resources>

@@ -38,4 +38,18 @@
         <item quantity="one">🎬 %1$d film</item>
         <item quantity="other">🎬 %1$d films</item>
     </plurals>
+    <string name="retry">Opnieuw proberen</string>
+    <string name="screen_director_list">Regisseurs</string>
+    <string name="screen_director_detail">Regisseur</string>
+    <string name="screen_settings">Instellingen</string>
+    <string name="back">Terug</string>
+    <string name="add_film">Film toevoegen</string>
+    <string name="edit_film">Film bewerken</string>
+    <string name="delete_film">Film verwijderen</string>
+    <string name="error_director_not_found">Regisseur niet gevonden</string>
+    <string name="field_title">Titel</string>
+    <string name="field_release_year">Jaar van uitgifte</string>
+    <string name="field_duration">Duur (min)</string>
+    <string name="field_in_color">In kleur</string>
+    <string name="field_awards">Prijzen (komma-gescheiden)</string>
 </resources>

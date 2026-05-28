@@ -26,6 +26,7 @@ fun DisplayController(
     onNext: () -> Unit,
     onEdit: () -> Unit,
     onDelete: () -> Unit,
+    onAddFilm: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
@@ -63,6 +64,13 @@ fun DisplayController(
             )
         ) {
             Text(stringResource(R.string.delete_director))
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+        OutlinedButton(
+            onClick = onAddFilm,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(stringResource(R.string.add_film))
         }
         Spacer(modifier = Modifier.height(4.dp))
         Text(
