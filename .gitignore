@@ -109,6 +109,7 @@ secrets.xml
 # CLAUDE CODE / SUPERPOWERS
 # =============================================================================
 
+CLAUDE.md
 .claude/settings.local.json
 .superpowers/
 docs/superpowers/

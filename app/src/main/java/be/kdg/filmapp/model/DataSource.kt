@@ -1,6 +1,6 @@
 package be.kdg.filmapp.model
 
-fun getDirectors(): Array<Director> = arrayOf(
+private val directors: Array<Director> = arrayOf(
     Director(1, "Yorgos Lanthimos", "Greece", "1973-09-23", 2001, null, true, 8.1,
         listOf(Genre.Drama, Genre.Thriller, Genre.Romance),
         "https://image.tmdb.org/t/p/w500/dvtv8eV1O8Fl385ctOu3sqO2PbD.jpg",
@@ -71,10 +71,7 @@ fun getDirectors(): Array<Director> = arrayOf(
         "Japanese director celebrated for tender, humanist family dramas and Palme d'Or winner for Shoplifters.", "Japanese")
 )
 
-fun getFilmCountForDirector(directorId: Int): Int =
-    getFilms().count { it.directorId == directorId }
-
-private fun getFilms(): Array<Film> = arrayOf(
+private val films: Array<Film> = arrayOf(
     Film(1, 1, "The Lobster", 2015, 8.2, 118, Genre.Drama, true,
         listOf("Jury Prize Cannes"),
         "https://image.tmdb.org/t/p/w500/7Y9ILV1unpW9mLpGcqyGQU72LUy.jpg"),
@@ -178,3 +175,11 @@ private fun getFilms(): Array<Film> = arrayOf(
         listOf("Academy Award Best Original Screenplay", "Golden Globe Best Musical or Comedy"),
         "https://image.tmdb.org/t/p/w500/3jCLmYDIIiSMPujbwygNpqdpM8N.jpg")
 )
+
+private val filmsByDirector: Map<Int, List<Film>> = films.groupBy { it.directorId }
+
+fun getDirectors(): Array<Director> = directors
+
+fun getFilmCountForDirector(directorId: Int): Int = filmsByDirector[directorId]?.size ?: 0
+
+fun getFilmsForDirector(directorId: Int): List<Film> = filmsByDirector[directorId] ?: emptyList()

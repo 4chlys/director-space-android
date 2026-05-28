@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FilmApp</string>
+    <string name="previous">← Vorige</string>
+    <string name="next">Volgende →</string>
+    <string name="save">Opslaan</string>
+    <string name="cancel">Annuleren</string>
+    <string name="delete">Verwijderen</string>
+    <string name="add">Toevoegen</string>
+    <string name="active">Actief</string>
+    <string name="inactive">Inactief</string>
+    <string name="born_info">Geboren %1$s  •  %2$s</string>
+    <string name="rating_display">⭐ %1$.1f/10</string>
+    <string name="career_active">Carrière: %1$d – heden</string>
+    <string name="career_ended">Carrière: %1$d – %2$d</string>
+    <string name="counter">%1$d / %2$d</string>
+    <string name="director_image_description">Portret van %1$s</string>
+    <string name="edit_director">Bewerken</string>
+    <string name="add_director">Regisseur toevoegen</string>
+    <string name="delete_director">Regisseur verwijderen</string>
+    <string name="delete_confirm">%1$s verwijderen?</string>
+    <string name="field_name">Naam</string>
+    <string name="field_country">Land</string>
+    <string name="field_nationality">Nationaliteit</string>
+    <string name="field_birth_date">Geboortedatum</string>
+    <string name="field_birth_date_hint">jjjj-mm-dd</string>
+    <string name="field_career_start">Begin carrière</string>
+    <string name="field_career_end">Einde carrière</string>
+    <string name="field_image_url">Afbeelding URL</string>
+    <string name="field_bio">Biografie</string>
+    <string name="field_rating">Beoordeling (0–10)</string>
+    <string name="field_genres">Genres</string>
+    <string name="field_active">Momenteel actief</string>
+    <string name="no_films">Geen films beschikbaar</string>
+    <string name="films_section">Films</string>
+    <string name="film_rating">⭐ %1$.1f</string>
+    <plurals name="film_count">
+        <item quantity="one">🎬 %1$d film</item>
+        <item quantity="other">🎬 %1$d films</item>
+    </plurals>
+</resources>
