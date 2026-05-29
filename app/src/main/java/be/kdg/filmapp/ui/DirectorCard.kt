@@ -109,7 +109,7 @@ fun ArtworkDescriptor(director: Director, filmCount: Int, modifier: Modifier = M
             Text(
                 text = pluralStringResource(R.plurals.film_count, filmCount, filmCount),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.secondary
+                color = MaterialTheme.colorScheme.onPrimaryContainer
             )
             if (director.bio.isNotBlank()) {
                 Spacer(modifier = Modifier.height(8.dp))
