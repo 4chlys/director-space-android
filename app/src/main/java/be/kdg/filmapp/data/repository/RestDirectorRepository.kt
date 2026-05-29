@@ -1,6 +1,6 @@
 package be.kdg.filmapp.data.repository
 
-import be.kdg.filmapp.data.api.DirectorApiService
+import be.kdg.filmapp.data.network.DirectorApiService
 import be.kdg.filmapp.model.Director
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

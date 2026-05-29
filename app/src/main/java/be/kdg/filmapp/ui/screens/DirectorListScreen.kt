@@ -16,9 +16,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.koinViewModel
 import be.kdg.filmapp.R
 import be.kdg.filmapp.model.Director
+import be.kdg.filmapp.ui.EditDirectorDialog
 import be.kdg.filmapp.ui.viewmodel.DirectorListViewModel
 import coil3.compose.AsyncImage
 
@@ -45,28 +50,47 @@ fun DirectorListScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    when {
-        uiState.isLoading -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            CircularProgressIndicator()
-        }
-        uiState.error != null -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(uiState.error!!, color = MaterialTheme.colorScheme.error)
-                Spacer(Modifier.height(8.dp))
-                Button(onClick = viewModel::loadDirectors) {
-                    Text(stringResource(R.string.retry))
+    Box(modifier = Modifier.fillMaxSize()) {
+        when {
+            uiState.isLoading -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+            uiState.error != null -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(uiState.error!!, color = MaterialTheme.colorScheme.error)
+                    Spacer(Modifier.height(8.dp))
+                    Button(onClick = viewModel::loadDirectors) {
+                        Text(stringResource(R.string.retry))
+                    }
+                }
+            }
+            else -> LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(16.dp)
+            ) {
+                items(uiState.directors, key = { it.id }) { director ->
+                    DirectorListItem(director = director, onClick = { onDirectorClick(director.id) })
                 }
             }
         }
-        else -> LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            contentPadding = PaddingValues(16.dp)
+
+        FloatingActionButton(
+            onClick = viewModel::showAddDialog,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp)
         ) {
-            items(uiState.directors, key = { it.id }) { director ->
-                DirectorListItem(director = director, onClick = { onDirectorClick(director.id) })
-            }
+            Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_director))
         }
+    }
+
+    if (uiState.showAddDialog) {
+        EditDirectorDialog(
+            director = null,
+            onDismiss = viewModel::dismissAddDialog,
+            onConfirm = viewModel::addDirector
+        )
     }
 }
 

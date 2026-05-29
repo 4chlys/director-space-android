@@ -1,8 +1,8 @@
 package be.kdg.filmapp.data.di
 
 import android.content.Context
-import be.kdg.filmapp.data.api.DirectorApiService
-import be.kdg.filmapp.data.api.FilmApiService
+import be.kdg.filmapp.data.network.DirectorApiService
+import be.kdg.filmapp.data.network.FilmApiService
 import be.kdg.filmapp.data.repository.DataStoreSettingsRepository
 import be.kdg.filmapp.data.repository.DirectorRepository
 import be.kdg.filmapp.data.repository.FilmRepository

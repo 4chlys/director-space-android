@@ -1,4 +1,4 @@
-package be.kdg.filmapp.data.api
+package be.kdg.filmapp.data.network
 
 import be.kdg.filmapp.model.Film
 import retrofit2.Response

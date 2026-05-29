@@ -16,7 +16,8 @@ import org.koin.android.annotation.KoinViewModel
 data class DirectorListUiState(
     val directors: List<Director> = emptyList(),
     val isLoading: Boolean = true,
-    val error: String? = null
+    val error: String? = null,
+    val showAddDialog: Boolean = false
 )
 
 @KoinViewModel
@@ -54,6 +55,23 @@ class DirectorListViewModel(
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to load directors", e)
                 _uiState.update { it.copy(isLoading = false, error = e.message) }
+            }
+        }
+    }
+
+    fun showAddDialog() = _uiState.update { it.copy(showAddDialog = true) }
+    fun dismissAddDialog() = _uiState.update { it.copy(showAddDialog = false) }
+
+    fun addDirector(director: Director) {
+        viewModelScope.launch {
+            try {
+                val saved = directorRepository.create(director)
+                Log.i(TAG, "Added director: ${saved.name}")
+                _uiState.update { it.copy(showAddDialog = false) }
+                loadDirectors()
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to add director", e)
+                _uiState.update { it.copy(error = e.message, showAddDialog = false) }
             }
         }
     }
