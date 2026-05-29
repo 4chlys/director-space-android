@@ -15,15 +15,22 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +39,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -41,6 +51,19 @@ import androidx.compose.ui.window.DialogProperties
 import be.kdg.filmapp.R
 import be.kdg.filmapp.model.Director
 import be.kdg.filmapp.model.Genre
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneOffset
+
+@Composable
+private fun RequiredLabel(text: String) {
+    Text(
+        buildAnnotatedString {
+            append(text)
+            withStyle(SpanStyle(color = MaterialTheme.colorScheme.error)) { append(" *") }
+        }
+    )
+}
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -61,6 +84,7 @@ fun EditDirectorDialog(
     var selectedGenres by remember { mutableStateOf((director?.genres ?: emptyList()).toSet()) }
     var imageUrl by remember { mutableStateOf(director?.imageUrl ?: "") }
     var bio by remember { mutableStateOf(director?.bio ?: "") }
+    var showDatePicker by remember { mutableStateOf(false) }
 
     val nameValid = name.isNotBlank()
     val careerStartValid = careerStart.toIntOrNull()?.let { it > 0 } == true
@@ -90,11 +114,20 @@ fun EditDirectorDialog(
                     else stringResource(R.string.edit_director),
                     style = MaterialTheme.typography.headlineSmall
                 )
+                val requiredHint = stringResource(R.string.required_field)
+                Text(
+                    text = buildAnnotatedString {
+                        withStyle(SpanStyle(color = MaterialTheme.colorScheme.error)) { append("* ") }
+                        append(requiredHint)
+                    },
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
 
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text(stringResource(R.string.field_name)) },
+                    label = { RequiredLabel(stringResource(R.string.field_name)) },
                     isError = name.isNotEmpty() && !nameValid,
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(
@@ -135,13 +168,47 @@ fun EditDirectorDialog(
                     placeholder = { Text(stringResource(R.string.field_birth_date_hint)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+                    trailingIcon = {
+                        IconButton(onClick = { showDatePicker = true }) {
+                            Icon(
+                                Icons.Default.DateRange,
+                                contentDescription = stringResource(R.string.field_birth_date)
+                            )
+                        }
+                    },
                     modifier = Modifier.fillMaxWidth()
                 )
+
+                if (showDatePicker) {
+                    val initialMillis = birthDate.takeIf { it.isNotBlank() }
+                        ?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
+                        ?.atStartOfDay(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()
+                    val datePickerState = rememberDatePickerState(initialSelectedDateMillis = initialMillis)
+                    DatePickerDialog(
+                        onDismissRequest = { showDatePicker = false },
+                        confirmButton = {
+                            TextButton(onClick = {
+                                datePickerState.selectedDateMillis?.let { millis ->
+                                    birthDate = Instant.ofEpochMilli(millis)
+                                        .atZone(ZoneOffset.UTC).toLocalDate().toString()
+                                }
+                                showDatePicker = false
+                            }) { Text(stringResource(R.string.ok)) }
+                        },
+                        dismissButton = {
+                            TextButton(onClick = { showDatePicker = false }) {
+                                Text(stringResource(R.string.cancel))
+                            }
+                        }
+                    ) {
+                        DatePicker(state = datePickerState)
+                    }
+                }
 
                 OutlinedTextField(
                     value = careerStart,
                     onValueChange = { careerStart = it },
-                    label = { Text(stringResource(R.string.field_career_start)) },
+                    label = { RequiredLabel(stringResource(R.string.field_career_start)) },
                     isError = careerStart.isNotEmpty() && !careerStartValid,
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(
@@ -167,7 +234,7 @@ fun EditDirectorDialog(
                     OutlinedTextField(
                         value = careerEnd,
                         onValueChange = { careerEnd = it },
-                        label = { Text(stringResource(R.string.field_career_end)) },
+                        label = { RequiredLabel(stringResource(R.string.field_career_end)) },
                         isError = careerEnd.isNotEmpty() && !careerEndValid,
                         singleLine = true,
                         keyboardOptions = KeyboardOptions(
@@ -181,7 +248,7 @@ fun EditDirectorDialog(
                 OutlinedTextField(
                     value = rating,
                     onValueChange = { rating = it },
-                    label = { Text(stringResource(R.string.field_rating)) },
+                    label = { RequiredLabel(stringResource(R.string.field_rating)) },
                     isError = rating.isNotEmpty() && !ratingValid,
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(
@@ -192,8 +259,12 @@ fun EditDirectorDialog(
                 )
 
                 Column {
+                    val genresLabel = stringResource(R.string.field_genres)
                     Text(
-                        text = stringResource(R.string.field_genres),
+                        text = buildAnnotatedString {
+                            append(genresLabel)
+                            withStyle(SpanStyle(color = MaterialTheme.colorScheme.error)) { append(" *") }
+                        },
                         style = MaterialTheme.typography.labelLarge,
                         color = if (!genresValid && selectedGenres.isEmpty())
                             MaterialTheme.colorScheme.error

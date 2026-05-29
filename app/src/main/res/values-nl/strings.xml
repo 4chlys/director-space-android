@@ -5,6 +5,8 @@
     <string name="next">Volgende →</string>
     <string name="save">Opslaan</string>
     <string name="cancel">Annuleren</string>
+    <string name="ok">OK</string>
+    <string name="required_field">Verplicht veld</string>
     <string name="delete">Verwijderen</string>
     <string name="add">Toevoegen</string>
     <string name="active">Actief</string>

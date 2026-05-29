@@ -32,6 +32,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -41,6 +44,16 @@ import androidx.compose.ui.window.DialogProperties
 import be.kdg.filmapp.R
 import be.kdg.filmapp.model.Film
 import be.kdg.filmapp.model.Genre
+
+@Composable
+private fun RequiredLabel(text: String) {
+    Text(
+        buildAnnotatedString {
+            append(text)
+            withStyle(SpanStyle(color = MaterialTheme.colorScheme.error)) { append(" *") }
+        }
+    )
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,30 +89,39 @@ fun EditFilmDialog(
                     if (isCreate) stringResource(R.string.add_film) else stringResource(R.string.edit_film),
                     style = MaterialTheme.typography.headlineSmall
                 )
+                val requiredHint = stringResource(R.string.required_field)
+                Text(
+                    text = buildAnnotatedString {
+                        withStyle(SpanStyle(color = MaterialTheme.colorScheme.error)) { append("* ") }
+                        append(requiredHint)
+                    },
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
                 OutlinedTextField(
                     value = title, onValueChange = { title = it },
-                    label = { Text(stringResource(R.string.field_title)) },
+                    label = { RequiredLabel(stringResource(R.string.field_title)) },
                     isError = title.isNotEmpty() && !titleValid, singleLine = true,
                     keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words, imeAction = ImeAction.Next),
                     modifier = Modifier.fillMaxWidth()
                 )
                 OutlinedTextField(
                     value = releaseYear, onValueChange = { releaseYear = it },
-                    label = { Text(stringResource(R.string.field_release_year)) },
+                    label = { RequiredLabel(stringResource(R.string.field_release_year)) },
                     isError = releaseYear.isNotEmpty() && !yearValid, singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                     modifier = Modifier.fillMaxWidth()
                 )
                 OutlinedTextField(
                     value = rating, onValueChange = { rating = it },
-                    label = { Text(stringResource(R.string.field_rating)) },
+                    label = { RequiredLabel(stringResource(R.string.field_rating)) },
                     isError = rating.isNotEmpty() && !ratingValid, singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = ImeAction.Next),
                     modifier = Modifier.fillMaxWidth()
                 )
                 OutlinedTextField(
                     value = durationMinutes, onValueChange = { durationMinutes = it },
-                    label = { Text(stringResource(R.string.field_duration)) },
+                    label = { RequiredLabel(stringResource(R.string.field_duration)) },
                     isError = durationMinutes.isNotEmpty() && !durationValid, singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
                     modifier = Modifier.fillMaxWidth()

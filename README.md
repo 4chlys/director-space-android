@@ -192,6 +192,10 @@ Alles hierboven is end-to-end getest op de emulator (API 36) tegen de json-serve
   uitgeklapte filmkaart verschijnen i.p.v. het hoofdscherm vol te zetten met knoppen
 - Vorige/volgende-navigatie tussen regisseurs op het detailscherm
 - Eigen kleurpaletten (Velvet Screen / Cinema Day), Bold Geometric typografie en eigen icoon
+- **Datumkiezer:** een Material 3-kalenderpopup (`DatePickerDialog`) op het geboortedatum-veld van
+  een regisseur, zonder extra libraries; manueel typen (jjjj-mm-dd) blijft ook mogelijk
+- **Verplichte velden visueel aangeduid:** een rood sterretje (*) bij elk verplicht veld, met een
+  legende "* Verplicht veld", in zowel het regisseur- als het film-formulier
 
 ### Bekende problemen / waar ik nog mee worstel
 
