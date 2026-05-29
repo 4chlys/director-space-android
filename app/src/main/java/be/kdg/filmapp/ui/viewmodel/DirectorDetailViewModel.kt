@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 
 data class DirectorDetailUiState(
     val directors: List<Director> = emptyList(),
@@ -30,6 +31,7 @@ data class DirectorDetailUiState(
     val currentDirector: Director? get() = directors.getOrNull(currentIndex)
 }
 
+@KoinViewModel
 class DirectorDetailViewModel(
     savedStateHandle: SavedStateHandle,
     private val directorRepository: DirectorRepository,

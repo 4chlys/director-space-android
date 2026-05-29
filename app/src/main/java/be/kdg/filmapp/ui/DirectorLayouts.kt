@@ -28,6 +28,7 @@ fun PortraitLayout(
     onEdit: () -> Unit,
     onDelete: () -> Unit,
     onAddFilm: () -> Unit,
+    onAddDirector: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -61,6 +62,7 @@ fun PortraitLayout(
             onEdit = onEdit,
             onDelete = onDelete,
             onAddFilm = onAddFilm,
+            onAddDirector = onAddDirector,
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -77,6 +79,7 @@ fun LandscapeLayout(
     onEdit: () -> Unit,
     onDelete: () -> Unit,
     onAddFilm: () -> Unit,
+    onAddDirector: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -115,6 +118,7 @@ fun LandscapeLayout(
                 onEdit = onEdit,
                 onDelete = onDelete,
                 onAddFilm = onAddFilm,
+                onAddDirector = onAddDirector,
                 modifier = Modifier.fillMaxWidth()
             )
         }

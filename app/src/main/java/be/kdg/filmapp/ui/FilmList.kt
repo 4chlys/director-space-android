@@ -22,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -45,6 +46,8 @@ fun FilmCard(film: Film, modifier: Modifier = Modifier) {
                 model = film.imageUrl,
                 contentDescription = film.title,
                 contentScale = ContentScale.Crop,
+                placeholder = painterResource(R.drawable.ic_image_placeholder),
+                error = painterResource(R.drawable.ic_broken_image),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(150.dp)

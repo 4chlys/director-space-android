@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -37,6 +38,8 @@ fun ArtworkWall(director: Director, modifier: Modifier = Modifier) {
             model = director.imageUrl,
             contentDescription = stringResource(R.string.director_image_description, director.name),
             contentScale = ContentScale.Crop,
+            placeholder = painterResource(R.drawable.ic_image_placeholder),
+            error = painterResource(R.drawable.ic_broken_image),
             modifier = Modifier.fillMaxSize()
         )
     }

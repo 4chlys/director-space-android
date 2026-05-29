@@ -27,6 +27,7 @@ fun DisplayController(
     onEdit: () -> Unit,
     onDelete: () -> Unit,
     onAddFilm: () -> Unit,
+    onAddDirector: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
@@ -71,6 +72,13 @@ fun DisplayController(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.add_film))
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+        Button(
+            onClick = onAddDirector,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(stringResource(R.string.add_director))
         }
         Spacer(modifier = Modifier.height(4.dp))
         Text(

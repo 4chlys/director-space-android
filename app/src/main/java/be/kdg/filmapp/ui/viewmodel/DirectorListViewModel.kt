@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 
 data class DirectorListUiState(
     val directors: List<Director> = emptyList(),
@@ -18,6 +19,7 @@ data class DirectorListUiState(
     val error: String? = null
 )
 
+@KoinViewModel
 class DirectorListViewModel(
     private val directorRepository: DirectorRepository,
     private val settingsRepository: SettingsRepository
@@ -26,6 +28,8 @@ class DirectorListViewModel(
     private val _uiState = MutableStateFlow(DirectorListUiState())
     val uiState: StateFlow<DirectorListUiState> = _uiState.asStateFlow()
 
+    private var currentFilterActive = false
+
     companion object {
         private const val TAG = "DirectorListViewModel"
     }
@@ -33,12 +37,13 @@ class DirectorListViewModel(
     init {
         viewModelScope.launch {
             settingsRepository.showOnlyActive.collect { filterActive ->
+                currentFilterActive = filterActive
                 loadDirectors(filterActive)
             }
         }
     }
 
-    fun loadDirectors(filterActive: Boolean = false) {
+    fun loadDirectors(filterActive: Boolean = currentFilterActive) {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, error = null) }
             try {

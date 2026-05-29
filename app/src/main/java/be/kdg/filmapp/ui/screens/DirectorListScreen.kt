@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.koinViewModel
@@ -83,6 +84,8 @@ fun DirectorListItem(director: Director, onClick: () -> Unit, modifier: Modifier
                 model = director.imageUrl,
                 contentDescription = director.name,
                 contentScale = ContentScale.Crop,
+                placeholder = painterResource(R.drawable.ic_image_placeholder),
+                error = painterResource(R.drawable.ic_broken_image),
                 modifier = Modifier.size(72.dp).clip(RoundedCornerShape(4.dp))
             )
             Spacer(Modifier.width(12.dp))
