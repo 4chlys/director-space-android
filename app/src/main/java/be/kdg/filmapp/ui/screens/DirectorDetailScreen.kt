@@ -58,7 +58,9 @@ fun DirectorDetailScreen(
                     onEdit = viewModel::showEditDialog,
                     onDelete = viewModel::showDeleteConfirm,
                     onAddFilm = viewModel::showAddFilmDialog,
-                    onAddDirector = viewModel::showAddDialog
+                    onAddDirector = viewModel::showAddDialog,
+                    onEditFilm = viewModel::showEditFilmDialog,
+                    onDeleteFilm = viewModel::showDeleteFilmConfirm
                 )
             } else {
                 PortraitLayout(
@@ -71,7 +73,9 @@ fun DirectorDetailScreen(
                     onEdit = viewModel::showEditDialog,
                     onDelete = viewModel::showDeleteConfirm,
                     onAddFilm = viewModel::showAddFilmDialog,
-                    onAddDirector = viewModel::showAddDialog
+                    onAddDirector = viewModel::showAddDialog,
+                    onEditFilm = viewModel::showEditFilmDialog,
+                    onDeleteFilm = viewModel::showDeleteFilmConfirm
                 )
             }
 

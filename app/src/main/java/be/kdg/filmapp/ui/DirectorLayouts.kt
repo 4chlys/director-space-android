@@ -29,6 +29,8 @@ fun PortraitLayout(
     onDelete: () -> Unit,
     onAddFilm: () -> Unit,
     onAddDirector: () -> Unit,
+    onEditFilm: (Film) -> Unit,
+    onDeleteFilm: (Film) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -52,6 +54,8 @@ fun PortraitLayout(
         )
         FilmListSection(
             films = films,
+            onEditFilm = onEditFilm,
+            onDeleteFilm = onDeleteFilm,
             modifier = Modifier.fillMaxWidth()
         )
         DisplayController(
@@ -80,6 +84,8 @@ fun LandscapeLayout(
     onDelete: () -> Unit,
     onAddFilm: () -> Unit,
     onAddDirector: () -> Unit,
+    onEditFilm: (Film) -> Unit,
+    onDeleteFilm: (Film) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -108,6 +114,8 @@ fun LandscapeLayout(
             )
             FilmListSection(
                 films = films,
+                onEditFilm = onEditFilm,
+                onDeleteFilm = onDeleteFilm,
                 modifier = Modifier.fillMaxWidth()
             )
             DisplayController(

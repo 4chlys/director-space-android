@@ -4,15 +4,22 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +38,12 @@ import be.kdg.filmapp.model.Film
 import coil3.compose.AsyncImage
 
 @Composable
-fun FilmCard(film: Film, modifier: Modifier = Modifier) {
+fun FilmCard(
+    film: Film,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     var expanded by remember { mutableStateOf(false) }
 
     Card(
@@ -80,6 +92,27 @@ fun FilmCard(film: Film, modifier: Modifier = Modifier) {
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        IconButton(onClick = onEdit, modifier = Modifier.size(32.dp)) {
+                            Icon(
+                                Icons.Default.Edit,
+                                contentDescription = stringResource(R.string.edit_film),
+                                modifier = Modifier.size(18.dp)
+                            )
+                        }
+                        Spacer(Modifier.width(4.dp))
+                        IconButton(onClick = onDelete, modifier = Modifier.size(32.dp)) {
+                            Icon(
+                                Icons.Default.Delete,
+                                contentDescription = stringResource(R.string.delete_film),
+                                tint = MaterialTheme.colorScheme.error,
+                                modifier = Modifier.size(18.dp)
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -87,7 +120,12 @@ fun FilmCard(film: Film, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun FilmListSection(films: List<Film>, modifier: Modifier = Modifier) {
+fun FilmListSection(
+    films: List<Film>,
+    onEditFilm: (Film) -> Unit,
+    onDeleteFilm: (Film) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(modifier = modifier) {
         Text(
             text = stringResource(R.string.films_section),
@@ -107,7 +145,11 @@ fun FilmListSection(films: List<Film>, modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(films, key = { it.id }) { film ->
-                    FilmCard(film = film)
+                    FilmCard(
+                        film = film,
+                        onEdit = { onEditFilm(film) },
+                        onDelete = { onDeleteFilm(film) }
+                    )
                 }
             }
         }

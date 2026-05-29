@@ -28,6 +28,7 @@ import org.koin.androidx.compose.koinViewModel
 fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
     val language by viewModel.language.collectAsState()
     val showOnlyActive by viewModel.showOnlyActive.collectAsState()
+    val themeMode by viewModel.themeMode.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -40,15 +41,43 @@ fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
         )
         Spacer(Modifier.height(4.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            LanguageButton(
+            ChoiceButton(
                 label = stringResource(R.string.language_english),
                 selected = language == "en",
                 onClick = { viewModel.setLanguage("en") }
             )
-            LanguageButton(
+            ChoiceButton(
                 label = stringResource(R.string.language_dutch),
                 selected = language == "nl",
                 onClick = { viewModel.setLanguage("nl") }
+            )
+        }
+
+        Spacer(Modifier.height(8.dp))
+        HorizontalDivider()
+        Spacer(Modifier.height(8.dp))
+
+        Text(
+            stringResource(R.string.settings_theme),
+            style = MaterialTheme.typography.titleSmall,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Spacer(Modifier.height(4.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            ChoiceButton(
+                label = stringResource(R.string.theme_system),
+                selected = themeMode == "system",
+                onClick = { viewModel.setThemeMode("system") }
+            )
+            ChoiceButton(
+                label = stringResource(R.string.theme_light),
+                selected = themeMode == "light",
+                onClick = { viewModel.setThemeMode("light") }
+            )
+            ChoiceButton(
+                label = stringResource(R.string.theme_dark),
+                selected = themeMode == "dark",
+                onClick = { viewModel.setThemeMode("dark") }
             )
         }
 
@@ -85,7 +114,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
 }
 
 @Composable
-private fun LanguageButton(
+private fun ChoiceButton(
     label: String,
     selected: Boolean,
     onClick: () -> Unit

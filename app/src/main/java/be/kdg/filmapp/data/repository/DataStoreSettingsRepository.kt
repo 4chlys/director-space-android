@@ -19,6 +19,7 @@ class DataStoreSettingsRepository(private val context: Context) : SettingsReposi
     private object Keys {
         val LANGUAGE = stringPreferencesKey("language")
         val SHOW_ONLY_ACTIVE = booleanPreferencesKey("show_only_active")
+        val THEME_MODE = stringPreferencesKey("theme_mode")
     }
 
     override val language: Flow<String> = context.dataStore.data
@@ -29,11 +30,19 @@ class DataStoreSettingsRepository(private val context: Context) : SettingsReposi
         .catch { emit(emptyPreferences()) }
         .map { it[Keys.SHOW_ONLY_ACTIVE] ?: false }
 
+    override val themeMode: Flow<String> = context.dataStore.data
+        .catch { emit(emptyPreferences()) }
+        .map { it[Keys.THEME_MODE] ?: "system" }
+
     override suspend fun setLanguage(code: String) {
         context.dataStore.edit { it[Keys.LANGUAGE] = code }
     }
 
     override suspend fun setShowOnlyActive(value: Boolean) {
         context.dataStore.edit { it[Keys.SHOW_ONLY_ACTIVE] = value }
+    }
+
+    override suspend fun setThemeMode(mode: String) {
+        context.dataStore.edit { it[Keys.THEME_MODE] = mode }
     }
 }

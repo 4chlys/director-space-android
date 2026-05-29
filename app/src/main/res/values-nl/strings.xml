@@ -58,4 +58,8 @@
     <string name="settings_preferences">Voorkeuren</string>
     <string name="settings_show_only_active">Alleen actieve regisseurs tonen</string>
     <string name="settings_show_only_active_hint">Verbergt regisseurs die gestopt zijn</string>
+    <string name="settings_theme">Thema</string>
+    <string name="theme_system">Systeem</string>
+    <string name="theme_light">Licht</string>
+    <string name="theme_dark">Donker</string>
 </resources>

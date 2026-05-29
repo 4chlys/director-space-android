@@ -1,8 +1,6 @@
 package be.kdg.filmapp.ui.viewmodel
 
 import android.util.Log
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import be.kdg.filmapp.data.repository.SettingsRepository
@@ -25,11 +23,13 @@ class SettingsViewModel(private val settingsRepository: SettingsRepository) : Vi
     val showOnlyActive: StateFlow<Boolean> = settingsRepository.showOnlyActive
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
+    val themeMode: StateFlow<String> = settingsRepository.themeMode
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), "system")
+
     fun setLanguage(code: String) {
         viewModelScope.launch {
             Log.i(TAG, "Setting language: $code")
             settingsRepository.setLanguage(code)
-            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(code))
         }
     }
 
@@ -37,6 +37,13 @@ class SettingsViewModel(private val settingsRepository: SettingsRepository) : Vi
         viewModelScope.launch {
             Log.i(TAG, "Setting showOnlyActive: $value")
             settingsRepository.setShowOnlyActive(value)
+        }
+    }
+
+    fun setThemeMode(mode: String) {
+        viewModelScope.launch {
+            Log.i(TAG, "Setting themeMode: $mode")
+            settingsRepository.setThemeMode(mode)
         }
     }
 }
