@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "be.kdg.filmapp"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "be.kdg.filmapp"
